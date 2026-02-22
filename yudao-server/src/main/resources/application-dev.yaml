@@ -31,8 +31,8 @@ spring:
             multi-statement-allow: true
     dynamic: # 多数据源配置
       druid: # Druid 【连接池】相关的全局配置
-        initial-size: 5 # 初始连接数
-        min-idle: 10 # 最小连接池数量
+        initial-size: 1 # 初始连接数
+        min-idle: 1 # 最小连接池数量
         max-active: 20 # 最大连接池数量
         max-wait: 60000 # 配置获取连接等待超时的时间，单位：毫秒（1 分钟）
         time-between-eviction-runs-millis: 60000 # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位：毫秒（1 分钟）
@@ -47,22 +47,24 @@ spring:
       primary: master
       datasource:
         master:
-          url: jdbc:mysql://127.0.0.1:3306/ruoyi-vue-pro?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true&rewriteBatchedStatements=true # MySQL Connector/J 8.X 连接的示例
-          username: root
-          password: 123456
-        slave: # 模拟从库，可根据自己需要修改 # 模拟从库，可根据自己需要修改
-          lazy: true # 开启懒加载，保证启动速度
-          url: jdbc:mysql://127.0.0.1:3306/ruoyi-vue-pro?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true&rewriteBatchedStatements=true # MySQL Connector/J 8.X 连接的示例
-          username: root
-          password: 123456
+          url: ${ruoyi-vue-pro-url-dev}
+          username: ${ruoyi-vue-pro-username-dev}
+          password: ${ruoyi-vue-pro-password-dev}
+#         tdengine: # IoT 数据库（需要 IoT 物联网再开启噢！）
+#           url: jdbc:TAOS-RS://taosdata:6041/ruoyi_vue_pro
+#           driver-class-name: com.taosdata.jdbc.rs.RestfulDriver
+#           username: root
+#           password: taosdata
+#           druid:
+#             validation-query: SELECT SERVER_STATUS() # TDengine 数据源的有效性检查 SQL
 
   # Redis 配置。Redisson 默认的配置足够使用，一般不需要进行调优
   data:
     redis:
-      host: 400-infra.server.iocoder.cn # 地址
-      port: 6379 # 端口
+      host: ${ruoyi-vue-pro-redis-url-dev} # 地址
+      port: ${ruoyi-vue-pro-redis-port-dev} # 端口
       database: 1 # 数据库索引
-#    password: 123456 # 密码，建议生产环境开启
+      password: ${ruoyi-vue-pro-redis-password-dev} # 密码，建议生产环境开启
 
 --- #################### 定时任务相关配置 ####################
 

@@ -1,4 +1,24 @@
 spring:
+  cloud:
+    azure:
+      keyvault:
+        secret:
+          property-source-enabled: true
+          property-sources:
+            - endpoint: ${ENDPOINT_URL}
+              credential:
+                client-secret: ${AZURE_CLIENT_SECRET}
+                client-id: ${AZURE_CLIENT_ID}
+              profile:
+                cloud-type: ${AZURE_CLOUD_TYPE}
+                tenant-id: ${AZURE_TENANT_ID}
+              retry:
+                mode: exponential
+                exponential:
+                  max-retries: 4
+                  base-delay: PT0.0801S
+                  max-delay: PT9S
+
   application:
     name: yudao-server
 
