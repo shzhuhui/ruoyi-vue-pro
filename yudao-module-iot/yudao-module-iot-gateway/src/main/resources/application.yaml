@@ -34,7 +34,7 @@ yudao:
     gateway:
       # 设备 RPC 配置
       rpc:
-        url: http://127.0.0.1:48080 # 主程序 API 地址
+        url: http://127.0.0.1:49090 # 主程序 API 地址
         connect-timeout: 30s
         read-timeout: 30s
       # 设备 Token 配置

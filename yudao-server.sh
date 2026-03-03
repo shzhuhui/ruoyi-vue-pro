@@ -7,7 +7,7 @@ BUILD_ID=$(date +%Y%m%d%H%M%S)
 PROJECT_VERSION="yudao-server ${BUILD_ID}"
 DOCKER_REPOSITORY="ruoyi_vue_pro/yudao-server"
 WEB_APP_NAME="ruoyi-vue-pro"
-WEB_APP_PORT=48080
+WEB_APP_PORT=49090
 
 # 颜色输出
 RED='\033[0;31m'
